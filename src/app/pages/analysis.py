@@ -31,13 +31,15 @@ dash.register_page(__name__, path="/analysis", name="Portfolio Analysis", title=
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
 def _graph(fig, height=380, cid=""):
-    return dcc.Graph(
+    kwargs = dict(
         figure=fig,
-        id=f"graph-{cid}" if cid else dash.no_update,
         config={"displayModeBar": True, "displaylogo": False,
                 "modeBarButtonsToRemove": ["lasso2d", "select2d"]},
         style={"height": f"{height}px"},
     )
+    if cid:
+        kwargs["id"] = f"graph-{cid}"
+    return dcc.Graph(**kwargs)
 
 
 def _card(title, body, extra=""):

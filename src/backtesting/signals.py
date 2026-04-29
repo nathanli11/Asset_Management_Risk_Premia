@@ -4,7 +4,7 @@ signals.py
 Calcul des signaux momentum pour la stratégie long-only sur le MSCI World.
 
 Signaux implémentés :
-  1. Momentum 12-1           : rendement cumulé sur 12 mois, skip 1 mois
+  1. Momentum 12-1 : rendement cumulé sur 12 mois, skip 1 mois
   2. Momentum idiosyncratique 12-1 : résidu de régression sur benchmark, 12-1
   3. Momentum 5 ans (mean reverting) : rendement 5 ans, signe inversé (contrarian)
   4. Momentum idiosyncratique 5 ans (mean reverting) : résidu 5 ans, signe inversé

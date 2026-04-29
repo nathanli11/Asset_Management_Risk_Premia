@@ -134,7 +134,7 @@ layout = html.Div([
                             html.Label("Date de début", className="form-label"),
                             dcc.DatePickerSingle(
                                 id="eng-start-date",
-                                date="2010-01-04",
+                                date="2007-01-01",
                                 display_format="DD/MM/YYYY",
                                 first_day_of_week=1,
                                 className="w-full",

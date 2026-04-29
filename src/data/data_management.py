@@ -7,7 +7,24 @@ project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 from src.data.utils import ParquetSaver
 
+def enrich_historical_components(df: pd.DataFrame) -> pd.DataFrame:
+    df["exchange_rate"] = df["currency_code"] + "EUR Curncy"
+    return df
 
+def convert_prices_to_eur(prices_df : pd.DataFrame, info_df : pd.DataFrame, currencies_df : pd.DataFrame) -> pd.DataFrame:
+
+    prices_eur = prices_df.copy()
+
+    for idx, row in info_df.iterrows():
+        ticker = row["ticker"]
+        exchange_rate_col = row["exchange_rate"]
+
+        if ticker in prices_eur.columns and exchange_rate_col in currencies_df.columns:
+            prices_eur[ticker] = prices_df[ticker] * currencies_df[exchange_rate_col]
+    
+    return prices_eur
+
+    
 class MSCIWorldComponentsByDate:
     def __init__(self):
         self.project_root = Path(__file__).resolve().parents[2]
