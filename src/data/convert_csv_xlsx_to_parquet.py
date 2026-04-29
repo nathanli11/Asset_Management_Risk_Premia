@@ -15,6 +15,7 @@ class ParquetConverter:
 
         self.xlsx_files = [
             self.project_path_initial / "data" / "informations_historical_components_msci_world.xlsx",
+            self.project_path_initial / "data" / "bloomberg_benchmark.xlsx",
         ]
 
     def convert_csv_to_parquet(self):

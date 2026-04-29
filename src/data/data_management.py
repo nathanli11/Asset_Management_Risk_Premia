@@ -8,25 +8,6 @@ sys.path.insert(0, str(project_root))
 from src.data.utils import ParquetSaver
 
 
-def enrich_historical_components(df: pd.DataFrame) -> pd.DataFrame:
-    df["exchange_rate"] = df["currency_code"] + "EUR Curncy"
-    return df
-
-
-def convert_prices_to_eur(prices_df : pd.DataFrame, info_df : pd.DataFrame, currencies_df : pd.DataFrame) -> pd.DataFrame:
-
-    prices_eur = prices_df.copy()
-
-    for idx, row in info_df.iterrows():
-        ticker = row["ticker"]
-        exchange_rate_col = row["exchange_rate"]
-
-        if ticker in prices_eur.columns and exchange_rate_col in currencies_df.columns:
-            prices_eur[ticker] = prices_df[ticker] * currencies_df[exchange_rate_col]
-    
-    return prices_eur
-
-
 class MSCIWorldComponentsByDate:
     def __init__(self):
         self.project_root = Path(__file__).resolve().parents[2]
@@ -35,7 +16,7 @@ class MSCIWorldComponentsByDate:
 
     def create_components_files_by_date(self):
         # Lire les données
-        weights_df = pd.read_parquet(self.storage_path / "historical_weights_components_msci_world_by_month.parquet")
+        weights_df = pd.read_parquet(self.data_path / "historical_weights_components_msci_world_by_month.parquet")
         info_df = pd.read_parquet(self.storage_path / "informations_historical_components_msci_world.parquet")
         
         # Convertir la colonne date en datetime
@@ -78,4 +59,3 @@ class MSCIWorldComponentsByDate:
                 saver.save_parquet(components_df, filename)
                 
                 print(f"✓ Fichier créé : {filename} ({len(components_df)} composants)")
-

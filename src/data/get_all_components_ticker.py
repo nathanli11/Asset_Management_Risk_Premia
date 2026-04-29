@@ -1,6 +1,10 @@
 import pandas as pd
 from pathlib import Path
 
+"""
+# Objectif : ce script sert uniquement à extraire tous les tickers présents dans le fichier parquet des prix historiques des composants du MSCI World, et à les sauvegarder dans un fichier Excel
+pour interroger bloomberg afin de réccupérer les informations nécessaires à la conception du portefeuille (secteur, pays, devise, etc.)
+
 # Chemin du fichier parquet
 parquet_path = Path(
     "/Users/arthurlenet/Desktop/M2 272/coursS2/AssetManagement/Projet/AM_Arthur_Le_Net_M2272/data/historical_prices_components_msci_world.parquet"
@@ -29,3 +33,5 @@ tickers_df.to_excel(xlsx_path, index=False)
 print(f"Nombre de colonnes initiales : {len(tickers)}")
 print(f"Nombre de tickers uniques : {len(tickers_unique)}")
 print(f"Fichier Excel créé : {xlsx_path}")
+
+"""
