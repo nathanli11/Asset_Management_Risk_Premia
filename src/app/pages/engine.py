@@ -111,7 +111,7 @@ layout = html.Div([
                     html.Div([
                         html.Div([
                             html.Label("Coûts TC (bps)", className="form-label"),
-                            dcc.Input(id="eng-tc-bps", type="number", value=5.0,
+                            dcc.Input(id="eng-tc-bps", type="number", value=0.0,
                                       min=0, max=100, step=0.5,
                                       className="dash-input"),
                         ], className="form-field"),
